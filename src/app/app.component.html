@@ -1,1 +1,163 @@
-<title>{{ title }}</title>
+<div class="flex h-screen">
+  <form [formGroup]="form" class="m-auto">
+    <div class="p-4 flex flex-col w-96 gap-5">
+      <!-- First Name -->
+      <label class="form-control w-full">
+        <div class="label">
+          <span class="label-text">First Name</span>
+          <span class="label-text-alt">* Required</span>
+        </div>
+        <input
+          type="text"
+          id="firstName"
+          name="firstName"
+          formControlName="firstName"
+          class="input input-bordered w-full"
+          placeholder="Type here" />
+        <div
+          id="firstNameErrors"
+          *ngIf="isValid('firstName')"
+          class="flex-col label items-start">
+          <span
+            *ngIf="hasError('firstName', 'required')"
+            class="label-text-alt text-red-700">
+            {{ getErrorMessage("required", "First Name") }}
+          </span>
+          <span
+            *ngIf="hasError('firstName', 'minlength')"
+            class="label-text-alt text-red-700">
+            {{ getErrorMessage("minLength", "First Name", "1") }}
+          </span>
+          <span
+            *ngIf="hasError('firstName', 'maxlength')"
+            class="label-text-alt text-red-700">
+            {{ getErrorMessage("maxLength", "First Name", "30") }}
+          </span>
+          <span
+            *ngIf="hasError('firstName', 'pattern')"
+            class="label-text-alt text-red-700">
+            {{ getErrorMessage("pattern", "First Name") }}
+          </span>
+        </div>
+      </label>
+
+      <!-- Last Name -->
+      <label class="form-control w-full">
+        <div class="label">
+          <span class="label-text">Last Name</span>
+          <span class="label-text-alt">* Required</span>
+        </div>
+        <input
+          type="text"
+          id="lastName"
+          name="lastName"
+          formControlName="lastName"
+          placeholder="Type here"
+          class="input input-bordered w-full" />
+        <div *ngIf="isValid('lastName')" class="flex-col label items-start">
+          <span
+            *ngIf="hasError('lastName', 'required')"
+            class="label-text-alt text-red-700">
+            {{ getErrorMessage("required", "Last Name") }}
+          </span>
+          <span
+            *ngIf="hasError('lastName', 'minlength')"
+            class="label-text-alt text-red-700">
+            {{ getErrorMessage("minLength", "Last Name", "1") }}
+          </span>
+          <span
+            *ngIf="hasError('lastName', 'maxlength')"
+            class="label-text-alt text-red-700">
+            {{ getErrorMessage("maxLength", "Last Name", "30") }}
+          </span>
+          <span
+            *ngIf="hasError('lastName', 'pattern')"
+            class="label-text-alt text-red-700">
+            {{ getErrorMessage("pattern", "Last Name") }}
+          </span>
+        </div>
+      </label>
+
+      <!-- E-mail -->
+      <label class="form-control w-full">
+        <div class="label">
+          <span class="label-text">E-mail</span>
+          <span class="label-text-alt">* Required</span>
+        </div>
+        <input
+          type="text"
+          id="email"
+          name="email"
+          formControlName="email"
+          placeholder="Type here"
+          class="input input-bordered w-full" />
+        <div *ngIf="isValid('email')" class="flex-col label items-start">
+          <span
+            *ngIf="hasError('email', 'required')"
+            class="label-text-alt text-red-700">
+            {{ getErrorMessage("required", "E-mail") }}
+          </span>
+          <span
+            *ngIf="hasError('email', 'minlength')"
+            class="label-text-alt text-red-700">
+            {{ getErrorMessage("minLength", "E-mail", "5") }}
+          </span>
+          <span
+            *ngIf="hasError('email', 'maxlength')"
+            class="label-text-alt text-red-700">
+            {{ getErrorMessage("maxLength", "E-mail", "30") }}
+          </span>
+          <span
+            *ngIf="hasError('email', 'pattern')"
+            class="label-text-alt text-red-700">
+            {{ getErrorMessage("pattern", "E-mail") }}
+          </span>
+        </div>
+      </label>
+
+      <!-- Phone -->
+      <label class="form-control w-full">
+        <div class="label">
+          <span class="label-text">Phone Number</span>
+          <span class="label-text-alt">* Required</span>
+        </div>
+        <input
+          type="text"
+          id="phone"
+          name="phone"
+          formControlName="phone"
+          placeholder="0123-123-1234"
+          class="input input-bordered w-full" />
+        <div *ngIf="isValid('phone')" class="flex-col label items-start">
+          <span
+            *ngIf="hasError('phone', 'required')"
+            class="label-text-alt text-red-700">
+            {{ getErrorMessage("required", "Phone Number") }}
+          </span>
+          <span
+            *ngIf="hasError('phone', 'pattern')"
+            class="label-text-alt text-red-700">
+            {{ getErrorMessage("pattern", "Phone Number") }}
+          </span>
+        </div>
+      </label>
+
+      <!-- Sex -->
+      <div class="flex justify-end gap-8">
+        <label class="label cursor-pointer gap-4">
+          <span class="label-text">Female</span>
+          <input type="radio" name="sex" class="radio" checked />
+        </label>
+        <label class="label cursor-pointer gap-4">
+          <span class="label-text">Male</span>
+          <input type="radio" name="sex" class="radio" checked />
+        </label>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="btn" [disabled]="isButtonDisabled">
+        Button
+      </button>
+    </div>
+  </form>
+</div>
